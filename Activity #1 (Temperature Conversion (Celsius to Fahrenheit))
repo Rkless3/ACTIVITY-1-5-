@@ -1,0 +1,14 @@
+using System;
+
+class Program {
+    static void Main() {
+        const double conversionFactor = 9.0 / 5.0;  // Constant for conversion
+        const int offset = 32;
+
+        Console.Write("Enter temperature in Celsius: ");
+        double celsius = Convert.ToDouble(Console.ReadLine());
+
+        double fahrenheit = (celsius * conversionFactor) + offset;
+        Console.WriteLine("Temperature in Fahrenheit: " + fahrenheit);
+    }
+}
