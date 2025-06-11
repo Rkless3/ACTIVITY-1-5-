@@ -1,0 +1,46 @@
+using System;
+
+public struct Time
+{
+    private readonly int minutes;
+
+    public Time(int hh, int mm)
+    {
+        this.minutes = 60 * hh + mm;
+    }
+
+    public int Hour => minutes / 60;
+    public int Minute => minutes % 60;
+
+    public override string ToString()
+    {
+        return string.Format("{0:D2}:{1:D2}", Hour, Minute);
+    }
+
+    public static implicit operator int(Time t)
+    {
+        return t.minutes;
+    }
+
+    public static explicit operator Time(int mins)
+    {
+        return new Time(0, mins);
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Time t1 = new Time(2, 30); // 150 minutes
+
+        int totalMinutes = t1; // Implicit conversion
+        Time fromMinutes = (Time)90; // Explicit conversion
+
+        Console.WriteLine("Time t1: " + t1); // 02:30
+        Console.WriteLine("t1 in minutes: " + totalMinutes); // 150
+        Console.WriteLine("90 minutes as Time: " + fromMinutes); // 01:30
+
+        Console.ReadLine();
+    }
+}
