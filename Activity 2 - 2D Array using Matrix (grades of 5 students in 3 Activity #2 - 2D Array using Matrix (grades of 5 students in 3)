@@ -1,0 +1,29 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int[,] grades = new int[5, 3];
+
+        grades[0, 0] = 85; grades[0, 1] = 90; grades[0, 2] = 88;
+        grades[1, 0] = 78; grades[1, 1] = 84; grades[1, 2] = 80;
+        grades[2, 0] = 92; grades[2, 1] = 89; grades[2, 2] = 94;
+        grades[3, 0] = 75; grades[3, 1] = 70; grades[3, 2] = 68;
+        grades[4, 0] = 88; grades[4, 1] = 85; grades[4, 2] = 90;
+
+        Console.WriteLine("Student Grades (Subjects 1 to 3):\n");
+
+        for (int i = 0; i < 5; i++)
+        {
+            Console.Write("Student {0}: ", i + 1);
+            for (int j = 0; j < 3; j++)
+            {
+                Console.Write(grades[i, j] + "\t");
+            }
+            Console.WriteLine();
+        }
+
+        Console.ReadLine();
+    }
+}
