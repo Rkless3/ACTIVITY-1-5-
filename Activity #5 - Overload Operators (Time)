@@ -9,6 +9,11 @@ public struct Time
         this.minutes = 60 * hh + mm;
     }
 
+    public Time(int totalMinutes)
+    {
+        this.minutes = totalMinutes;
+    }
+
     public int Hour => minutes / 60;
     public int Minute => minutes % 60;
 
@@ -19,34 +24,12 @@ public struct Time
 
     public static Time operator +(Time t1, Time t2)
     {
-        return new Time(0, t1.minutes + t2.minutes);
+        return new Time(t1.minutes + t2.minutes);
     }
 
     public static Time operator -(Time t1, Time t2)
     {
-        return new Time(0, t1.minutes - t2.minutes);
-    }
-
-    public static bool operator ==(Time t1, Time t2)
-    {
-        return t1.minutes == t2.minutes;
-    }
-
-    public static bool operator !=(Time t1, Time t2)
-    {
-        return !(t1 == t2);
-    }
-
-    public override bool Equals(object obj)
-    {
-        if (obj is Time)
-            return this == (Time)obj;
-        return false;
-    }
-
-    public override int GetHashCode()
-    {
-        return minutes;
+        return new Time(t1.minutes - t2.minutes);
     }
 }
 
@@ -57,15 +40,13 @@ class Program
         Time t1 = new Time(10, 30);
         Time t2 = new Time(2, 45);
 
-        Time sum = t1 + t2;
-        Time diff = t1 - t2;
+        Time sum = t1 + t2;    
+        Time diff = t1 - t2;    
 
         Console.WriteLine("Time 1: " + t1);
         Console.WriteLine("Time 2: " + t2);
         Console.WriteLine("Sum: " + sum);
         Console.WriteLine("Difference: " + diff);
-        Console.WriteLine("Equal? " + (t1 == t2));
-        Console.WriteLine("Not Equal? " + (t1 != t2));
 
         Console.ReadLine();
     }
